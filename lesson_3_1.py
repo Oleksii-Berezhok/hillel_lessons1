@@ -1,18 +1,16 @@
 a = int(input("Введіть перше число:"))
 b = int(input("Введіть друге число:"))
-if b != 0:
-    c = input("Введіть математичну дію (+, - , *, /):")
-    if c == "+" :
-        print (a+b)
-    elif c == "-":
-        print(a-b)
-    elif c == "*":
-        print(a*b)
-    elif c == "/":
+c = input("Введіть математичну дію (+, - , *, /):")
+if c == "+" :
+    print (a+b)
+elif c == "-":
+    print(a-b)
+elif c == "*":
+    print(a*b)
+elif c == "/":
+    if b != 0:
         print(a / b)
-    elif c == 0 :
-        print("Не можна ")
     else:
-        print("Ви ввели не вірну дію")
+        print("Помилка: не можна ділити на нуль!")
 else:
-    print("На ноль не можна ділити")
+    print("Ви ввели не вірну дію")
