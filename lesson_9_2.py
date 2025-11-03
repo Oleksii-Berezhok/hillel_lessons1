@@ -1,4 +1,9 @@
 def difference (*args: int | float) -> int | float:
+    """
+    Found max and min difference function
+    :param args: int | float
+    :return: Difference between max and min
+    """
     if not args:
         return 0
     else:
