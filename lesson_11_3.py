@@ -1,6 +1,6 @@
 def is_even(number: int) -> bool:
     text_str = str(number)
-    if text_str[-1] in '2468':
+    if text_str[-1] in '02468':
         return True
     else:
         return False
