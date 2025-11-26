@@ -18,19 +18,19 @@ class Student(Human):
     def __str__(self):
         return f'Student: {self.first_name} {self.last_name} is {self.age} years old. Record book: {self.record_book}'
 
+class TooManyStudentsError(Exception):
+    pass
+
 class Group:
 
     def __init__(self, number):
         self.number = number
         self.group = set()
-        self.count = 0
 
     def add_student(self, student):
-            if self.count == 10:
-                raise ValueError('Group cannot be more than 10 students.')
-
-            self.group.add(student)
-            self.count +=1
+        if len(self.group) == 10:
+            raise TooManyStudentsError("Group cannot have more than 10 students.")
+        self.group.add(student)
 
     def delete_student(self, last_name):
         for student in self.group:
@@ -48,19 +48,14 @@ class Group:
         all_students = '\n'.join(str(student) for student in self.group)
         return f'Number:{self.number}\n{all_students} '
 
-st1 = Student('Male', 30, 'Steve', 'Jobs', 'AN142')
-st2 = Student('Female', 25, 'Liza', 'Taylor', 'AN145')
-st3 = Student('Male', 31, 'Steve', 'Jobs', 'AN143')
-st4 = Student('Female', 23, 'Liza', 'Taylor', 'AN146')
-st5 = Student('Male', 34, 'Steve', 'Jobs', 'AN148')
-
 gr = Group('PD1')
-gr.add_student(st1)
-gr.add_student(st2)
-gr.count = 9
-gr.add_student(st3)
-gr.add_student(st4)
 
+try:
+    for i in range(11):
+        gr.add_student(Student("M", 20+int(i), f"Name{i}", f"Surname{i}", f"AN14{i}"))
+except TooManyStudentsError as e:
+    print(f'Error: {e}')
+print(gr)
 
 
 
